@@ -1,0 +1,62 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(App12());
+
+class App12 extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Program Menghitung Usia',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Nurcahyo (KELAS)'),
+        ),
+        body: NurcahyoApp(),
+      ),
+    );
+  }
+}
+
+class NurcahyoApp extends StatefulWidget {
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<NurcahyoApp> {
+  final txtnama = TextEditingController();
+  final txttahunlahir = TextEditingController();
+
+  String hasil = '';
+
+  onHitung() {
+    setState(() {
+      var usia = 2020 - int.parse(txttahunlahir.text);
+      hasil = "${txtnama.text} berusia $usia tahun";
+    });
+  }
+
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(20.0),
+      child: Column(
+        children: <Widget>[
+          TextField(
+            controller: txtnama,
+            decoration: new InputDecoration(
+              labelText: "Nama Mahasiswa",
+            ),
+          ),
+          TextField(
+            controller: txttahunlahir,
+            decoration: new InputDecoration(
+              labelText: "Tahun Lahir",
+            ),
+          ),
+          RaisedButton(
+            child: Text("Hitung"),
+            onPressed: onHitung,
+          ),
+          Text(hasil),
+        ],
+      ),
+    );
+  }
+}
