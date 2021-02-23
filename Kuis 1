@@ -1,0 +1,84 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(App13());
+
+class App13 extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Program Persegi Panjang',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Cindy Selvia (5SIA1)'),
+        ),
+        body: NurcahyoApp(),
+      ),
+    );
+  }
+}
+
+class NurcahyoApp extends StatefulWidget {
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<NurcahyoApp> {
+  final txtnama = TextEditingController();
+  final txtjammasuk = TextEditingController();
+  final txtjamkeluar = TextEditingController();
+  final txttarif = TextEditingController();
+
+  String lama = '';
+  String bayar = '';
+
+  onHitung() {
+    setState(() {
+      var waktu = int.parse(txtjamkeluar.text) - int.parse(txtjammasuk.text);
+      lama = "Lama = $waktu Jam";
+      var harga = waktu * int.parse(txttarif.text);
+      if(waktu>2){
+        var diskon = harga - 1000;
+        bayar = "Biaya ${txtnama.text} = $diskon";
+      }else{
+      bayar = "Bayar ${txtnama.text} = $harga";
+        }
+    });
+  }
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(20.0),
+      child: Column(
+        children: <Widget>[
+          TextField(
+            controller: txtnama,
+            decoration: new InputDecoration(
+              labelText: "Nama User",
+            ),
+          ),
+          TextField(
+            controller: txtjammasuk,
+            decoration: new InputDecoration(
+              labelText: "Jam Masuk",
+            ),
+          ),
+          TextField(
+            controller: txtjamkeluar,
+            decoration: new InputDecoration(
+              labelText: "Jam Keluar",
+            ),
+          ),
+          TextField(
+            controller: txttarif,
+            decoration: new InputDecoration(
+              labelText: "Tarif Perjam",
+            ),
+          ),
+          RaisedButton(
+            child: Text("Hitung"),
+            onPressed: onHitung,
+          ),
+          Text(lama),
+          Text(bayar),
+        ],
+      ),
+    );
+  }
+}
