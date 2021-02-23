@@ -1,0 +1,39 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.deepOrange,
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          
+          title: Text('Welcome To Flutter'),
+        ),
+        body: Center(
+          child: Column(
+            children: [
+              Text('Nama  : Cindy Selvia'),
+              Text('Kelas : 5SIA1'),
+              Text('E-mail: Cindyselviajb@gmail.com'),
+              Text('Alamat: Jl Karya bakti'),
+              Image.network(https://lh3.googleusercontent.com/ogw/ADGmqu9w7yowpI_TteA37x-F3eX5Q1nYlWTQ-acZXdmdfg=s192-c-mo
+             
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text('Hello, World!', style: Theme.of(context).textTheme.headline4);
+  }
+}
